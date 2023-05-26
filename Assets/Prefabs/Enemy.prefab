@@ -132,10 +132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  enemyBullet: {fileID: 0}
-  bulletSpeed: 0
-  minimumFireRate: 0
-  maximumFireRate: 0
+  enemyBullet: {fileID: 670338938373692698, guid: 3e68ab0b7d58c3d4fa21f27071039a4c, type: 3}
+  enemyMuzzle: {fileID: 1772754956019220385}
+  bulletSpeed: 5
+  minimumFireRate: 0.1
+  maximumFireRate: 0.1
 --- !u!50 &-8451386802583986627
 Rigidbody2D:
   serializedVersion: 4

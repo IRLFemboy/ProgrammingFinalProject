@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D bc;
     Vector2 move;
+    bool isDead;
 
     Transform equipSlot;
 
@@ -46,17 +47,34 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        for (int i = 0; i < hearts.Length; i++)
+        if(!isDead)
         {
-            if(i < heartNum)
+            horizontal = Input.GetAxisRaw("Horizontal");
+
+            for (int i = 0; i < hearts.Length; i++)
             {
-                hearts[i].enabled = true;
+                if (i < health)
+                {
+                    hearts[i].sprite = fullHeart;
+                }
+                else
+                {
+                    hearts[i].sprite = emptyHeart;
+                }
+
+                if (i < heartNum)
+                {
+                    hearts[i].enabled = true;
+                }
+                else
+                {
+                    hearts[i].enabled = false;
+                }
             }
-            else
+
+            if(health <= 0)
             {
-                hearts[i].enabled = false;
+                Die();
             }
         }
     }
@@ -79,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyProjectile"))
+        if (collision.gameObject.CompareTag("EnemyProjectile") && !isDead)
         {
             Destroy(collision.gameObject);
             TakeDamage();
@@ -89,5 +107,10 @@ public class PlayerController : MonoBehaviour
     void TakeDamage()
     {
         health--;
+    }
+
+    void Die()
+    {
+        isDead = true;
     }
 }

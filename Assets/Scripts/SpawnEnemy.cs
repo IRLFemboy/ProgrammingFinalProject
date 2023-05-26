@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     public int enemyCap;
+    public int amountSpawned;
     public GameObject enemy;
     public GameObject[] enemySpawnPointLeft;
     public GameObject[] enemySpawnPointRight;
@@ -20,6 +21,7 @@ public class SpawnEnemy : MonoBehaviour
     void SpawnEnemies()
     {
         var enemyAmount = FindObjectsOfType<EnemyController>();
+        amountSpawned = enemyAmount.Length;
         for (int i = 0; i < enemySpawnPointLeft.Length; i++)
         {
             var pointLeft = enemySpawnPointLeft[i].transform;
