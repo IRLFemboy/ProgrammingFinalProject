@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject selectedGun;
     public GameObject[] gunOptions;
 
+    int waveNumber;
+    
 
     // Start is called before the first frame update
     void Start()
