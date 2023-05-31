@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7957308630840954815}
   - component: {fileID: 7957308630840954814}
-  - component: {fileID: 7957308630840954813}
+  - component: {fileID: 5409496827787664798}
   m_Layer: 0
-  m_Name: FunnyGun
+  m_Name: FastGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7957308630840954813
+--- !u!114 &5409496827787664798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,10 +126,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7957308630840954812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362e3370220724844a0a652944d6f5d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 56561dd9520013d4e97f4f0ea7705716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzle: {fileID: 0}
+  canShoot: 1
   bullet: {fileID: 9211248188690921272, guid: 7aa41a5c8b52596498c7970109708de5, type: 3}
-  bulletSpeed: 10
-  shootDelay: 0.3
-  damage: 2
+  bulletSpeed: 14
+  shootDelay: 0.2
+  damage: 1

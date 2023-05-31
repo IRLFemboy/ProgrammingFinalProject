@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    Transform muzzle;
+    [HideInInspector] public Transform muzzle;
+    [HideInInspector] public bool canShoot = true;
     public Rigidbody2D bullet;
     public float bulletSpeed;
-    bool canShoot = true;
     public float shootDelay;
+    public float damage;
 
     private void Start()
     {
@@ -17,7 +18,10 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        Shoot();
+        if(!PlayerController.isDead)
+        {
+            Shoot();
+        }
     }
 
     public virtual void Shoot()
@@ -32,10 +36,9 @@ public class Gun : MonoBehaviour
             Debug.Log("Pew!");
         }
     }
-    IEnumerator ShootDelay()
+    public IEnumerator ShootDelay()
     {
         yield return new WaitForSeconds(shootDelay);
         canShoot = true;
-        Debug.Log("You can shoot now! :)");
     }
 }

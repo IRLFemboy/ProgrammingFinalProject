@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D bc;
     Vector2 move;
-    bool isDead;
+    public static bool isDead;
 
     Transform equipSlot;
 
@@ -25,10 +25,15 @@ public class PlayerController : MonoBehaviour
     public Sprite emptyHeart;
     Transform heartContent;
 
+    Animator anim;
+    GameManager gm;
+
     private void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         heartContent = GameObject.Find("HeartContent").transform;
         equipSlot = GameObject.Find("EquipSlot").transform;
 
@@ -39,6 +44,7 @@ public class PlayerController : MonoBehaviour
             newHeart.transform.SetParent(heartContent);
         }
 
+        equippedGun = gm.selectedGun;
         GameObject gun = Instantiate(equippedGun, equipSlot.position, equipSlot.rotation);
         gun.transform.SetParent(gameObject.transform);
         GetHearts();
@@ -81,7 +87,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        if(!isDead)
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
     }
 
     Image[] GetHearts()
@@ -112,5 +121,7 @@ public class PlayerController : MonoBehaviour
     void Die()
     {
         isDead = true;
+        rb.velocity = Vector2.zero;
+        anim.SetBool("isDead", isDead);
     }
 }

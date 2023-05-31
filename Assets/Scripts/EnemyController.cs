@@ -20,6 +20,9 @@ public class EnemyController : MonoBehaviour
     [Header("Score Addition")]
     int scoreToAdd = 100;
 
+    [Header("helf")]
+    public float health;
+
     GameManager gm;
 
     void Start()
@@ -76,15 +79,22 @@ public class EnemyController : MonoBehaviour
         {
             speed *= -1;
         }
+    }
 
-        if (collision.gameObject.CompareTag("Projectile"))
+    public void TakeDamage(float damageToTake)
+    {
+        health -= damageToTake;
+        if(health <= 0)
         {
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
-
-            gm.score += scoreToAdd;
-            gm.UpdateScore();
+            Die();
         }
+    }
+
+    void Die()
+    {
+        gm.score += scoreToAdd;
+        gm.UpdateScore();
+        Destroy(gameObject);
     }
 
     void Shoot()
