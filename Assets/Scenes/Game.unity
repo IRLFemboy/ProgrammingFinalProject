@@ -1082,7 +1082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4533184956275924797, guid: a5fb421615138e942afe1ec88159206f, type: 3}
       propertyPath: gunPrefabs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4533184956275924797, guid: a5fb421615138e942afe1ec88159206f, type: 3}
       propertyPath: gunPrefabs.Array.data[0]
@@ -1092,6 +1092,10 @@ PrefabInstance:
       propertyPath: gunPrefabs.Array.data[1]
       value: 
       objectReference: {fileID: 7957308630840954812, guid: 791339d54a7aba0469f173c1209839d0, type: 3}
+    - target: {fileID: 4533184956275924797, guid: a5fb421615138e942afe1ec88159206f, type: 3}
+      propertyPath: gunPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3992009914601284040, guid: cd71a3f213dac244e8132b82cc3ff60c, type: 3}
     - target: {fileID: 4533184956275924799, guid: a5fb421615138e942afe1ec88159206f, type: 3}
       propertyPath: m_RootOrder
       value: 1
