@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public static bool isDead;
 
     Transform equipSlot;
+    public GameObject[] gunPrefabs;
 
     public GameObject equippedGun;
 
@@ -44,9 +45,11 @@ public class PlayerController : MonoBehaviour
             newHeart.transform.SetParent(heartContent);
         }
 
-        equippedGun = gm.selectedGun;
+        int selectedGun = PlayerPrefs.GetInt("selectedGun");
+        equippedGun = gunPrefabs[selectedGun];
         GameObject gun = Instantiate(equippedGun, equipSlot.position, equipSlot.rotation);
         gun.transform.SetParent(gameObject.transform);
+
         GetHearts();
         hearts = GetHearts();
     }

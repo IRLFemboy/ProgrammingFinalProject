@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Gun : MonoBehaviour
     public float shootDelay;
     public float damage;
 
+
+
     private void Start()
     {
         muzzle = GameObject.Find("muzzle").transform;
@@ -18,7 +21,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if(!PlayerController.isDead)
+        if(!PlayerController.isDead && SceneManager.GetActiveScene().name != "SelectScene")
         {
             Shoot();
         }
