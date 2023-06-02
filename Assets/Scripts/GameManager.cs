@@ -50,10 +50,12 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene("SelectScene");
+        PlayerController.isDead = false;
     }
 
     public void LeaveCuzUrBad()
     {
+        Debug.Log("wooOOooOOo game quit!1!1!!1");
         Application.Quit();
     }
 }
