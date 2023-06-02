@@ -133,6 +133,6 @@ MonoBehaviour:
   canShoot: 1
   bullet: {fileID: -2875886886838392731, guid: 19a81b61b7b6df84aaa461cf7e102591, type: 3}
   bulletSpeed: 7
-  shootDelay: 0.5
-  damage: 2
-  explosionDamage: 1
+  shootDelay: 1
+  damage: 1
+  explosionDamage: 2

@@ -12,14 +12,21 @@ public class ChernobulletExplosion : MonoBehaviour
         launcher = FindObjectOfType<ChernobylLauncher>();
 
         gun = FindObjectOfType<Gun>();
+
+        StartCoroutine(DestroyTheThingy());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<EnemyController>())
         {
-            Debug.Log("Enemy collision!");
             EnemyController enemyToDamage = collision.gameObject.GetComponent<EnemyController>();
             enemyToDamage.TakeDamage(launcher.explosionDamage);
         }
+    }
+
+    IEnumerator DestroyTheThingy()
+    {
+        yield return new WaitForSeconds(.5f);
+        Destroy(gameObject);
     }
 }

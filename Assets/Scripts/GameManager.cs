@@ -8,20 +8,52 @@ public class GameManager : MonoBehaviour
 {
     public int score;
     public TextMeshProUGUI scoreDisplay;
-
-
     int waveNumber;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreDisplay = GameObject.Find("ScoreDisplay").GetComponent<TextMeshProUGUI>();
-        scoreDisplay.text = "Score: " + score;
+        if(SceneManager.GetActiveScene().name == "Game")
+        {
+            scoreDisplay = GameObject.Find("ScoreDisplay").GetComponent<TextMeshProUGUI>();
+            scoreDisplay.text = "Score: " + score;
+        }
+    }
+
+    private void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "GameOver")
+        {
+            if(Input.GetButtonDown("Submit"))
+            {
+                Restart();
+            }
+
+            if(Input.GetButtonDown("Cancel"))
+            {
+                LeaveCuzUrBad();
+            }
+        }
     }
 
     public void UpdateScore()
     {
         scoreDisplay.text = "Score: " + score;
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("SelectScene");
+    }
+
+    public void LeaveCuzUrBad()
+    {
+        Application.Quit();
     }
 }

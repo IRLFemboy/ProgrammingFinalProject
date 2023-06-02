@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GunSelector : MonoBehaviour
 {
     public int selectedGun = 0;
     public GameObject[] guns;
+    public TextMeshProUGUI gunName;
+
+    private void Start()
+    {
+        gunName.text = guns[selectedGun].name;
+    }
 
     void Update()
     {
@@ -27,6 +34,7 @@ public class GunSelector : MonoBehaviour
     {
         guns[selectedGun].SetActive(false);
         selectedGun = (selectedGun + 1) % guns.Length;
+        gunName.text = guns[selectedGun].name;
         guns[selectedGun].SetActive(true);
     }
 
@@ -38,6 +46,7 @@ public class GunSelector : MonoBehaviour
         {
             selectedGun += guns.Length;
         }
+        gunName.text = guns[selectedGun].name;
         guns[selectedGun].SetActive(true);
     }
 

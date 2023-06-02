@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
             if(health <= 0)
             {
-                Die();
+                StartCoroutine(Die());
             }
         }
     }
@@ -121,10 +121,12 @@ public class PlayerController : MonoBehaviour
         health--;
     }
 
-    void Die()
+    IEnumerator Die()
     {
         isDead = true;
         rb.velocity = Vector2.zero;
         anim.SetBool("isDead", isDead);
+        yield return new WaitForSeconds(1);
+        gm.GameOver();
     }
 }
