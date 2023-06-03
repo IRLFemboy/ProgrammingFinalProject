@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
             scoreDisplay = GameObject.Find("ScoreDisplay").GetComponent<TextMeshProUGUI>();
             scoreDisplay.text = "Score: " + score;
         }
+
+        Cursor.visible = false;
     }
 
     private void Update()

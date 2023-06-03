@@ -12,6 +12,9 @@ public class Gun : MonoBehaviour
     public float shootDelay;
     public float damage;
 
+    public AudioClip shootSound;
+    public AudioSource shootSource;
+
 
 
     private void Start()
@@ -37,6 +40,8 @@ public class Gun : MonoBehaviour
             newBullet.velocity = Vector2.up * bulletSpeed;
             StartCoroutine(ShootDelay());
             Debug.Log("Pew!");
+
+            shootSource.PlayOneShot(shootSound);
         }
     }
     public IEnumerator ShootDelay()

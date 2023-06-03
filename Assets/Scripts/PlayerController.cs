@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     GameManager gm;
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
+    public AudioClip hurtClip;
+    public AudioClip explosionClip;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -118,13 +123,18 @@ public class PlayerController : MonoBehaviour
 
     void TakeDamage()
     {
-        health--;
+        if (health > 0)
+        {
+            audioSource.PlayOneShot(hurtClip);
+            health--;
+        }    
     }
 
     IEnumerator Die()
     {
         isDead = true;
         rb.velocity = Vector2.zero;
+        audioSource.PlayOneShot(explosionClip);
         anim.SetBool("isDead", isDead);
         yield return new WaitForSeconds(1);
         gm.GameOver();

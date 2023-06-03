@@ -7,6 +7,9 @@ public class ChernobulletExplosion : MonoBehaviour
     public ChernobylLauncher launcher;
     public Gun gun;
 
+    public AudioSource source;
+    public AudioClip explosion;
+
     private void Start()
     {
         launcher = FindObjectOfType<ChernobylLauncher>();
@@ -21,6 +24,7 @@ public class ChernobulletExplosion : MonoBehaviour
         {
             EnemyController enemyToDamage = collision.gameObject.GetComponent<EnemyController>();
             enemyToDamage.TakeDamage(launcher.explosionDamage);
+            source.PlayOneShot(explosion);
         }
     }
 
